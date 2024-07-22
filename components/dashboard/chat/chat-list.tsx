@@ -52,7 +52,7 @@ export function ChatList({
                 message.name !== selectedUser.name ? "items-end" : "items-start"
               )}
             >
-              <div className="flex gap-3 items-center ">
+              <div className="flex gap-5 items-center ">
                 {message.name === selectedUser.name && (
                   <Avatar className="flex justify-center items-center">
                     <AvatarImage
