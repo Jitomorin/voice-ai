@@ -55,15 +55,18 @@ const routeList: RouteProps[] = [
 const featureList: FeatureProps[] = [
   {
     title: "Natural Language Processing",
-    description: "Our voice bot uses advanced NLP to understand and respond to user queries accurately.",
+    description:
+      "Our voice bot uses advanced NLP to understand and respond to user queries accurately.",
   },
   {
     title: "24/7 Customer Support",
-    description: "Provide round-the-clock assistance to your users with our always-available chat application.",
+    description:
+      "Provide round-the-clock assistance to your users with our always-available chat application.",
   },
   {
     title: "AI-Powered Analytics",
-    description: "Gain insights from user interactions to continually improve your service.",
+    description:
+      "Gain insights from user interactions to continually improve your service.",
   },
 ];
 
@@ -111,6 +114,14 @@ export const Navbar = () => {
                     <Link href={href}>{label}</Link>
                   </Button>
                 ))}
+                {/* <Button
+                  onClick={() => logout()}
+                  asChild
+                  variant="ghost"
+                  className="justify-start text-base"
+                >
+                  Logout
+                </Button> */}
               </div>
             </div>
 

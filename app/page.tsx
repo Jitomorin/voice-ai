@@ -17,10 +17,8 @@ export default function Home() {
 
   return (
     <>
-     <Navbar />
-      <HeroSection
-      userLoggedIn={userLoggedIn}
-      />
+      <Navbar />
+      <HeroSection userLoggedIn={userLoggedIn} />
       <SponsorsSection />
       <BenefitsSection />
       <FeaturesSection />

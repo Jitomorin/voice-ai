@@ -40,11 +40,12 @@ import { columns } from "@/components/dashboard/home/columns";
 import { DataTable } from "@/components/dashboard/home/data-table";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { deleteCookie, setCookie } from "cookies-next";
 
 export default function Dashboard() {
+  // const cookieStore = cookies();
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
-
 
   useEffect(() => {
     const email = localStorage.getItem("email")?.toString() || "";
@@ -52,16 +53,29 @@ export default function Dashboard() {
       setIsLogin(true);
     } else {
       setIsLogin(false);
-     router.push("/sign-in");
+      router.push("/sign-in");
     }
   }, []);
 
-  const Logout = () => {
-    localStorage.removeItem("email");
-    router.push("/sign-in");
+  async function Logout() {
+    // setCookie("bread", "IAMBREAD");
+    // setCookie("accessToken", "Teast", {
+    //   httpOnly: true,
+    // });
+    try {
+      await fetch("/api/logout", {
+        method: "GET",
+      }).then((res) => {
+        localStorage.removeItem("email");
+        router.push("/sign-in");
+        // setCookie("bread", "IAMBREAD");
+        console.log("Logged out successfully");
+      });
+      // setCookie("refreshToken", "");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   }
-
-
   return (
     <TooltipProvider>
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -201,9 +215,7 @@ export default function Dashboard() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem
-                onClick={Logout}
-                >Logout</DropdownMenuItem>
+                <DropdownMenuItem onClick={Logout}>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
@@ -248,7 +260,6 @@ export default function Dashboard() {
                     Here&apos;s a list of your tasks for this month!
                   </p>
                 </div>
-              
               </div>
               <DataTable data={tasks} columns={columns} />
             </div>

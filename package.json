@@ -36,6 +36,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "cookie": "^0.6.0",
+    "cookies-next": "^4.2.1",
     "embla-carousel-react": "^8.1.7",
     "framer-motion": "^11.3.8",
     "jsonwebtoken": "^9.0.2",
